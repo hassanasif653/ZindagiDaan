@@ -55,7 +55,13 @@ app.post("/chatbot", async (req, res) => {
   }
 });
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+if (!stripeSecretKey) {
+  console.error("❌ STRIPE_SECRET_KEY is missing");
+}
+
+const stripe = new Stripe(stripeSecretKey);
 
 //! payment key
 
@@ -64,6 +70,10 @@ const DATABASE_URL = process.env.DATABASE_URL;
 console.log("ENV DATABASE_URL =", process.env.DATABASE_URL);
 // MongoDB Client
 const client = new MongoClient(DATABASE_URL);
+
+if (!process.env.FIREBASE_SERVICE_KEY) {
+  console.error("❌ FIREBASE_SERVICE_KEY missing");
+}
 
 const decoded = Buffer.from(
   process.env.FIREBASE_SERVICE_KEY,
@@ -100,8 +110,8 @@ const verifyToken = async (req, res, next) => {
 // Database Connection & Route Setup
 async function run() {
   try {
-    // await client.connect();
-    // console.log("Connected to MongoDB successfully");
+    await client.connect();
+    console.log("Connected to MongoDB successfully");
 
     const db = client.db("ZindagiDaan");
     const usersCollection = db.collection("Users");
