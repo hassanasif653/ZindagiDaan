@@ -1,0 +1,49 @@
+[
+  {
+    "type": "header",
+    "version": "4.8.5",
+    "comment": "Pakistan Geo Data Extended"
+  },
+  { "type": "database", "name": "pk_geo_code" },
+  {
+    "type": "table",
+    "name": "cities",
+    "database": "pk_geo_code",
+    "data": [
+      { "id": "1", "province_id": "1", "name": "Karachi", "bn_name": "کراچی", "url": "karachi.sindh.gov.pk" },
+      { "id": "2", "province_id": "1", "name": "Hyderabad", "bn_name": "حیدرآباد", "url": "hyderabad.sindh.gov.pk" },
+      { "id": "3", "province_id": "1", "name": "Sukkur", "bn_name": "سکھر", "url": "sukkur.sindh.gov.pk" },
+      { "id": "4", "province_id": "1", "name": "Larkana", "bn_name": "لاڑکانہ", "url": "larkana.sindh.gov.pk" },
+      { "id": "5", "province_id": "1", "name": "Nawabshah", "bn_name": "نواب شاہ", "url": "nawabshah.sindh.gov.pk" },
+
+      { "id": "6", "province_id": "2", "name": "Lahore", "bn_name": "لاہور", "url": "lahore.punjab.gov.pk" },
+      { "id": "7", "province_id": "2", "name": "Faisalabad", "bn_name": "فیصل آباد", "url": "faisalabad.punjab.gov.pk" },
+      { "id": "8", "province_id": "2", "name": "Rawalpindi", "bn_name": "راولپنڈی", "url": "rawalpindi.punjab.gov.pk" },
+      { "id": "9", "province_id": "2", "name": "Multan", "bn_name": "ملتان", "url": "multan.punjab.gov.pk" },
+      { "id": "10", "province_id": "2", "name": "Gujranwala", "bn_name": "گوجرانوالہ", "url": "gujranwala.punjab.gov.pk" },
+      { "id": "11", "province_id": "2", "name": "Sialkot", "bn_name": "سیالکوٹ", "url": "sialkot.punjab.gov.pk" },
+
+      { "id": "12", "province_id": "3", "name": "Peshawar", "bn_name": "پشاور", "url": "peshawar.kp.gov.pk" },
+      { "id": "13", "province_id": "3", "name": "Mardan", "bn_name": "مردان", "url": "mardan.kp.gov.pk" },
+      { "id": "14", "province_id": "3", "name": "Abbottabad", "bn_name": "ایبٹ آباد", "url": "abbottabad.kp.gov.pk" },
+      { "id": "15", "province_id": "3", "name": "Swat", "bn_name": "سوات", "url": "swat.kp.gov.pk" },
+      { "id": "16", "province_id": "3", "name": "Kohat", "bn_name": "کوہاٹ", "url": "kohat.kp.gov.pk" },
+
+      { "id": "17", "province_id": "4", "name": "Quetta", "bn_name": "کوئٹہ", "url": "quetta.balochistan.gov.pk" },
+      { "id": "18", "province_id": "4", "name": "Gwadar", "bn_name": "گوادر", "url": "gwadar.balochistan.gov.pk" },
+      { "id": "19", "province_id": "4", "name": "Khuzdar", "bn_name": "خضدار", "url": "khuzdar.balochistan.gov.pk" },
+      { "id": "20", "province_id": "4", "name": "Turbat", "bn_name": "تربت", "url": "turbat.balochistan.gov.pk" },
+      { "id": "21", "province_id": "4", "name": "Sibi", "bn_name": "سبی", "url": "sibi.balochistan.gov.pk" },
+
+      { "id": "22", "province_id": "5", "name": "Islamabad", "bn_name": "اسلام آباد", "url": "islamabad.gov.pk" },
+
+      { "id": "23", "province_id": "6", "name": "Gilgit", "bn_name": "گلگت", "url": "gilgit.gb.gov.pk" },
+      { "id": "24", "province_id": "6", "name": "Skardu", "bn_name": "سکردو", "url": "skardu.gb.gov.pk" },
+      { "id": "25", "province_id": "6", "name": "Hunza", "bn_name": "ہنزہ", "url": "hunza.gb.gov.pk" },
+
+      { "id": "26", "province_id": "7", "name": "Muzaffarabad", "bn_name": "مظفر آباد", "url": "muzaffarabad.ajk.gov.pk" },
+      { "id": "27", "province_id": "7", "name": "Mirpur", "bn_name": "میرپور", "url": "mirpur.ajk.gov.pk" },
+      { "id": "28", "province_id": "7", "name": "Kotli", "bn_name": "کوٹلی", "url": "kotli.ajk.gov.pk" }
+    ]
+  }
+]
