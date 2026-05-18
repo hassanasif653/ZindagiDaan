@@ -60,7 +60,7 @@ const FindBloodInput: React.FC = () => {
 const { data: organData = [], isLoading: organLoading } = useQuery({
   queryKey: ["organ-card-data"],
   queryFn: async () => {
-    const res = await axios.get("http://localhost:3000/organ-request");
+    const res = await axios.get("import.meta.env.VITE_API_URL");
     return res.data;
   },
 });
