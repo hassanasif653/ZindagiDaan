@@ -77,29 +77,32 @@ const isLoading = bloodLoading || organLoading;
   }, [province, allCities]);
 
   const selectedProvinceName =
-    allProvinces.find((p) => p.id === province)?.name || "";
-
-  const selectedCityName =
-    allCities.find((c) => c.id === city)?.name || "";
+  allProvinces.find((p) => String(p.id) === String(province))?.name || "";
+const selectedCityName =
+  allCities.find((c) => String(c.id) === String(city))?.name || "";
 
   // filtering logic
+// YEH LAGAO:
 // YEH LAGAO:
 const filteredRequests = useMemo(() => {
   if (!isSearched) return [];
 
   return donationCardData.filter((item: any) => {
+    // Blood group match
     const matchBlood = bloodGroup ? item.bloodGroup === bloodGroup : true;
 
+    // Province match — ID se bhi, name se bhi
     const matchProvince = province
       ? String(item.provinceId) === String(province) ||
-        item.provinceName === selectedProvinceName ||
-        item.recipientDivision === selectedProvinceName
+        item.provinceName?.toLowerCase() === selectedProvinceName?.toLowerCase() ||
+        item.recipientDivision?.toLowerCase() === selectedProvinceName?.toLowerCase()
       : true;
 
+    // City match — ID se bhi, name se bhi
     const matchCity = city
       ? String(item.cityId) === String(city) ||
-        item.cityName === selectedCityName ||
-        item.recipientDistrict === selectedCityName
+        item.cityName?.toLowerCase() === selectedCityName?.toLowerCase() ||
+        item.recipientDistrict?.toLowerCase() === selectedCityName?.toLowerCase()
       : true;
 
     return matchBlood && matchProvince && matchCity;
