@@ -349,8 +349,15 @@ const DashboardWelcome: React.FC = () => {
                 <Users className="h-4 w-4 text-purple-600 dark:text-purple-400" />
               </CardHeader>
               <CardContent>
+                // YEH LAGAO:
                 <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">
-                  {userStats.totalDonorsHelped || 0}
+                  {(() => {
+                    const bloodDonors = userStats.totalDonorsHelped || 0;
+                    const organDonors = organRequests.filter(
+                      (r: any) => r.requestStatus === "fulfilled" || r.requestStatus === "inprogress"
+                    ).length;
+                    return bloodDonors + organDonors;
+                  })()}
                 </div>
                 <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
                   People you've helped
