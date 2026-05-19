@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "@/Hook/useAxiosSecure";
-import axios from "axios";
+
 import DonationRequestCard from "./Shared/DonationRequestCard/DonationRequestCard";
 import type { bloodDonation } from "@/types/blog";
 import Container from "../Shared/Responsive/Container";
@@ -28,7 +28,7 @@ const FindBloodInput: React.FC = () => {
   const [bloodGroup, setBloodGroup] = useState("");
   const [province, setProvince] = useState("");
   const [city, setCity] = useState("");
-  const [isSearched, setIsSearched] = useState(true);
+  const [isSearched, setIsSearched] = useState(false);
 
   const [allProvinces, setAllProvinces] = useState<Province[]>([]);
   const [allCities, setAllCities] = useState<City[]>([]);
@@ -57,16 +57,11 @@ const FindBloodInput: React.FC = () => {
   },
 });
 
-const { data: organData = [], isLoading: organLoading } = useQuery({
-  queryKey: ["organ-card-data"],
-  queryFn: async () => {
-    const res = await axios.get("import.meta.env.VITE_API_URL");
-    return res.data;
-  },
-});
 
-const donationCardData = [...bloodData, ...organData];
-const isLoading = bloodLoading || organLoading;
+const donationCardData = (bloodData as any[]).filter(
+  (item) => !item.organType && !item.patientName
+);
+const isLoading = bloodLoading;
 
   // filter cities based on province
   const availableCities = useMemo(() => {

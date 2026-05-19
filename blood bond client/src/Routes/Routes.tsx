@@ -45,8 +45,9 @@ import SafetyGuidelines from "@/Page/Shared/Footer/Page/SafetyGuidelines/SafetyG
 import Team from "@/Page/Shared/Footer/Page/Team/Team";
 import TermsOfService from "@/Page/Shared/Footer/Page/TermsOfService/TermsOfService";
 import PrivetRoute from "@/Page/Shared/PrivetRoute/PrivetRoute";
-0
 import Volunteer from "@/Page/Volunteer/Volunteer";
+import PrivetVolunteerRoute from "@/Page/Shared/Volunteer/PrivetVolunteerRoute";
+
 
 import { createBrowserRouter } from "react-router-dom";
 
@@ -245,9 +246,9 @@ const router = createBrowserRouter([
       {
   path: "donation-requests",
   element: (
-    <PrivetRoute>
+    <PrivetVolunteerRoute>
       <DonationRequest />
-    </PrivetRoute>
+    </PrivetVolunteerRoute>
   ),
 },
       {
