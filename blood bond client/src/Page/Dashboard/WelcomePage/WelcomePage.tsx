@@ -349,7 +349,7 @@ const DashboardWelcome: React.FC = () => {
                 <Users className="h-4 w-4 text-purple-600 dark:text-purple-400" />
               </CardHeader>
               <CardContent>
-                // YEH LAGAO:
+                
                 <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">
                   {(() => {
                     const bloodDonors = userStats.totalDonorsHelped || 0;
