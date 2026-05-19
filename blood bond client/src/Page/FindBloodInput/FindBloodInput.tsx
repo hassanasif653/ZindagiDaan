@@ -58,10 +58,17 @@ const FindBloodInput: React.FC = () => {
 });
 
 
-const donationCardData = (bloodData as any[]).filter(
-  (item) => !item.organType && !item.patientName
-);
-const isLoading = bloodLoading;
+// Organ requests bhi fetch karo
+const { data: organData = [], isLoading: organLoading } = useQuery({
+  queryKey: ["organ-card-data"],
+  queryFn: async () => {
+    const res = await axiosSecure.get("/organ-request");  // ✅ sahi URL
+    return res.data;
+  },
+});
+
+const donationCardData = [...(bloodData as any[]), ...(organData as any[])];
+const isLoading = bloodLoading || organLoading;
 
   // filter cities based on province
   const availableCities = useMemo(() => {
@@ -76,33 +83,36 @@ const isLoading = bloodLoading;
     allCities.find((c) => c.id === city)?.name || "";
 
   // filtering logic
+// YEH LAGAO:
 const filteredRequests = useMemo(() => {
-    if (!isSearched) return [];
+  if (!isSearched) return [];
 
-    return donationCardData.filter((item: bloodDonation) => {
-      const matchBlood = bloodGroup ? item.bloodGroup === bloodGroup : true;
-      const matchProvince = province
-  ? item.provinceId === province || 
-    item.provinceName === selectedProvinceName ||
-    item.recipientDivision === selectedProvinceName
-  : true;
-const matchCity = city
-  ? item.cityId === city || 
-    item.cityName === selectedCityName ||
-    item.recipientDistrict === selectedCityName
-  : true;
+  return donationCardData.filter((item: any) => {
+    const matchBlood = bloodGroup ? item.bloodGroup === bloodGroup : true;
 
-      return matchBlood && matchProvince && matchCity;
-    });
-  }, [
-    donationCardData,
-    bloodGroup,
-    province,
-    city,
-    isSearched,
-    selectedProvinceName,
-    selectedCityName,
-  ]);
+    const matchProvince = province
+      ? String(item.provinceId) === String(province) ||
+        item.provinceName === selectedProvinceName ||
+        item.recipientDivision === selectedProvinceName
+      : true;
+
+    const matchCity = city
+      ? String(item.cityId) === String(city) ||
+        item.cityName === selectedCityName ||
+        item.recipientDistrict === selectedCityName
+      : true;
+
+    return matchBlood && matchProvince && matchCity;
+  });
+}, [
+  donationCardData,
+  bloodGroup,
+  province,
+  city,
+  isSearched,
+  selectedProvinceName,
+  selectedCityName,
+]);
 
   // province change
   const handleProvinceChange = (value: string) => {
